@@ -43,7 +43,7 @@ public class PacientePersistenceTest {
     @Test
     public void databaseConnectionTest() throws IOException, PersistenceException{
         InputStream input = null;
-        input = ClassLoader.getSystemResourceAsStream("applicationconfig.properties");
+        input = ClassLoader.getSystemResourceAsStream("applicationconfig_test.properties");
         Properties properties=new Properties();
         properties.load(input);
         
@@ -53,13 +53,13 @@ public class PacientePersistenceTest {
         
         //IMPLEMENTACION DE LAS PRUEBAS
         
-         daof.getDaoPaciente().save(new Paciente(36,"cc", "DIGITEUSUARIO", new Date(0)));
+         daof.getDaoPaciente().save(new Paciente(32,"cc", "Martin", new Date(0)));
           
-        Paciente load = daof.getDaoPaciente().load(33,"cc");
+        Paciente load = daof.getDaoPaciente().load(32,"cc");
         System.out.println("Usuario cargado:" + load.toString());
         //assert que verifica la carga de un usuario por medio del nombre obtenido.
         //En este caso se verifica el usuario 33 .
-         assertEquals("Carlos", load.getNombre());
+         assertEquals("Martin", load.getNombre());
 
 
         daof.commitTransaction();
