@@ -31,6 +31,9 @@ public interface DaoPaciente {
     public void save(Paciente p) throws PersistenceException;
     
     public void update(Paciente p) throws PersistenceException;
+       public boolean isValidador() ;
+   
+
     
     
 }

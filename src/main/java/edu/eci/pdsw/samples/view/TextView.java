@@ -16,10 +16,12 @@
  */
 package edu.eci.pdsw.samples.view;
 
+import edu.eci.pdsw.samples.entities.Paciente;
 import edu.eci.pdsw.samples.persistence.DaoFactory;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Date;
 import java.util.Properties;
 
 /**
@@ -43,7 +45,8 @@ public class TextView {
         /**
          * OPERACIONES CON LOS DAO
          */
-        
+       
+          
         
         daof.beginSession();
         daof.commitTransaction();
