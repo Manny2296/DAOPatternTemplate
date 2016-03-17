@@ -52,14 +52,16 @@ public class PacientePersistenceTest {
         daof.beginSession();
         
         //IMPLEMENTACION DE LAS PRUEBAS
-        
-         daof.getDaoPaciente().save(new Paciente(32,"cc", "Martin", new Date(0)));
+        Paciente tmp = new Paciente(33,"cc", "Isaias", new Date(0));
+         
+         daof.getDaoPaciente().save(tmp);
           
-        Paciente load = daof.getDaoPaciente().load(32,"cc");
+        Paciente load = daof.getDaoPaciente().load(33,"cc");
+        
         System.out.println("Usuario cargado:" + load.toString());
         //assert que verifica la carga de un usuario por medio del nombre obtenido.
         //En este caso se verifica el usuario 33 .
-         assertEquals("Martin", load.getNombre());
+         assertEquals("Isaias", load.getNombre());
 
 
         daof.commitTransaction();
