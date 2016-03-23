@@ -56,7 +56,7 @@ public class PacientePersistenceTest {
         //IMPLEMENTACION DE LAS PRUEBAS
         
         //PRUEBA 1 
-        Paciente pacprub1 = new Paciente(112, "cc", "Manuel Felipe",new Date(0));
+        Paciente pacprub1 = new Paciente(113, "cc", "Manuel Felipe",new Date(0));
         Set<Consulta> list_cons= new LinkedHashSet<>();
          Consulta cons1 = new Consulta(new Date(0), "Mantenimiento Preventivo");
          Consulta cons2 = new Consulta(new Date(0), "Analisis psicodelico");
@@ -68,7 +68,7 @@ public class PacientePersistenceTest {
                  assertEquals("Manuel Felipe", load2.getNombre());
                
         //PRUEBA 2
-        Paciente tmp = new Paciente(55,"cc", "Isaias", new Date(0));
+        Paciente tmp = new Paciente(56,"cc", "Isaias", new Date(0));
          
          daof.getDaoPaciente().save(tmp);
           
@@ -83,7 +83,7 @@ public class PacientePersistenceTest {
    
    
   //PRUEBA 3
-   Paciente pacprub2 = new Paciente(2108223, "cc", "Sergio Erick",new Date(0));
+   Paciente pacprub2 = new Paciente(2108224, "cc", "Sergio Erick",new Date(0));
         Set<Consulta> list_cons2= new LinkedHashSet<>();
          Consulta cons3 = new Consulta(new Date(0), "Mantenimiento Preventivo");
 
@@ -92,10 +92,23 @@ public class PacientePersistenceTest {
          daof.getDaoPaciente().save(pacprub2);
                Paciente load3 = daof.getDaoPaciente().load(2108222,"cc");
                  assertEquals("Sergio Erick", load3.getNombre());
-                 
+        //PRUEBA 4
+        boolean ok= false;
+        Paciente load1 = daof.getDaoPaciente().load(112, "cc");
+        if(load1.getId() == 112){
+            ok = true ;
+        }
+        assertTrue("Este paciente fue cargado", ok);
+        
+        
+        
+        
         daof.commitTransaction();
         daof.endSession();        
     }
+    
+
+   
     
     
 }
