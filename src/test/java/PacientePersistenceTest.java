@@ -22,7 +22,9 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
+import java.util.LinkedHashSet;
 import java.util.Properties;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -52,11 +54,25 @@ public class PacientePersistenceTest {
         daof.beginSession();
         
         //IMPLEMENTACION DE LAS PRUEBAS
-        Paciente tmp = new Paciente(33,"cc", "Isaias", new Date(0));
+        
+        //PRUEBA 1 
+        Paciente pacprub1 = new Paciente(112, "cc", "Manuel Felipe",new Date(0));
+        Set<Consulta> list_cons= new LinkedHashSet<>();
+         Consulta cons1 = new Consulta(new Date(0), "Mantenimiento Preventivo");
+         Consulta cons2 = new Consulta(new Date(0), "Analisis psicodelico");
+         list_cons.add(cons2);
+         list_cons.add(cons1);
+         pacprub1.setConsultas(list_cons);
+         daof.getDaoPaciente().save(pacprub1);
+               Paciente load2 = daof.getDaoPaciente().load(1018484513,"cc");
+                 assertEquals("Manuel Felipe", load2.getNombre());
+               
+        //PRUEBA 2
+        Paciente tmp = new Paciente(55,"cc", "Isaias", new Date(0));
          
          daof.getDaoPaciente().save(tmp);
           
-        Paciente load = daof.getDaoPaciente().load(33,"cc");
+        Paciente load = daof.getDaoPaciente().load(55,"cc");
         
         System.out.println("Usuario cargado:" + load.toString());
         //assert que verifica la carga de un usuario por medio del nombre obtenido.
@@ -64,6 +80,19 @@ public class PacientePersistenceTest {
          assertEquals("Isaias", load.getNombre());
 
 
+   
+   
+  //PRUEBA 3
+   Paciente pacprub2 = new Paciente(2108223, "cc", "Sergio Erick",new Date(0));
+        Set<Consulta> list_cons2= new LinkedHashSet<>();
+         Consulta cons3 = new Consulta(new Date(0), "Mantenimiento Preventivo");
+
+         list_cons2.add(cons3);
+         pacprub2.setConsultas(list_cons2);
+         daof.getDaoPaciente().save(pacprub2);
+               Paciente load3 = daof.getDaoPaciente().load(2108222,"cc");
+                 assertEquals("Sergio Erick", load3.getNombre());
+                 
         daof.commitTransaction();
         daof.endSession();        
     }
