@@ -56,7 +56,7 @@ public class PacientePersistenceTest {
         //IMPLEMENTACION DE LAS PRUEBAS
         
         //PRUEBA 1 
-        Paciente pacprub1 = new Paciente(113, "cc", "Manuel Felipe",new Date(0));
+        Paciente pacprub1 = new Paciente(115, "cc", "Manuel Felipe",new Date(0));
         Set<Consulta> list_cons= new LinkedHashSet<>();
          Consulta cons1 = new Consulta(new Date(0), "Mantenimiento Preventivo");
          Consulta cons2 = new Consulta(new Date(0), "Analisis psicodelico");
@@ -64,15 +64,15 @@ public class PacientePersistenceTest {
          list_cons.add(cons1);
          pacprub1.setConsultas(list_cons);
          daof.getDaoPaciente().save(pacprub1);
-               Paciente load2 = daof.getDaoPaciente().load(1018484513,"cc");
+               Paciente load2 = daof.getDaoPaciente().load(115,"cc");
                  assertEquals("Manuel Felipe", load2.getNombre());
                
         //PRUEBA 2
-        Paciente tmp = new Paciente(56,"cc", "Isaias", new Date(0));
+        Paciente tmp = new Paciente(58,"cc", "Isaias", new Date(0));
          
          daof.getDaoPaciente().save(tmp);
           
-        Paciente load = daof.getDaoPaciente().load(55,"cc");
+        Paciente load = daof.getDaoPaciente().load(58,"cc");
         
         System.out.println("Usuario cargado:" + load.toString());
         //assert que verifica la carga de un usuario por medio del nombre obtenido.
@@ -83,19 +83,19 @@ public class PacientePersistenceTest {
    
    
   //PRUEBA 3
-   Paciente pacprub2 = new Paciente(2108224, "cc", "Sergio Erick",new Date(0));
+   Paciente pacprub2 = new Paciente(1111, "cc", "Sergio Erick",new Date(0));
         Set<Consulta> list_cons2= new LinkedHashSet<>();
          Consulta cons3 = new Consulta(new Date(0), "Mantenimiento Preventivo");
 
          list_cons2.add(cons3);
          pacprub2.setConsultas(list_cons2);
          daof.getDaoPaciente().save(pacprub2);
-               Paciente load3 = daof.getDaoPaciente().load(2108222,"cc");
+               Paciente load3 = daof.getDaoPaciente().load(1111,"cc");
                  assertEquals("Sergio Erick", load3.getNombre());
         //PRUEBA 4
         boolean ok= false;
-        Paciente load1 = daof.getDaoPaciente().load(112, "cc");
-        if(load1.getId() == 112){
+        Paciente load1 = daof.getDaoPaciente().load(1111, "cc");
+        if(load1.getId() == 1111){
             ok = true ;
         }
         assertTrue("Este paciente fue cargado", ok);
