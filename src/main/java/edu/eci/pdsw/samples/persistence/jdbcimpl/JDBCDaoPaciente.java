@@ -108,6 +108,7 @@ public class JDBCDaoPaciente implements DaoPaciente {
             ps2.setString(4, p.getTipo_id());
             ps2.execute();
         }
+   
         
 
          

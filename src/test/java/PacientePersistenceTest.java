@@ -63,14 +63,14 @@ public class PacientePersistenceTest {
          list_cons.add(cons2);
          list_cons.add(cons1);
          pacprub1.setConsultas(list_cons);
-         daof.getDaoPaciente().save(pacprub1);
+        // daof.getDaoPaciente().save(pacprub1);
                Paciente load2 = daof.getDaoPaciente().load(115,"cc");
                  assertEquals("Manuel Felipe", load2.getNombre());
                
         //PRUEBA 2
         Paciente tmp = new Paciente(58,"cc", "Isaias", new Date(0));
          
-         daof.getDaoPaciente().save(tmp);
+         //daof.getDaoPaciente().save(tmp);
           
         Paciente load = daof.getDaoPaciente().load(58,"cc");
         
@@ -89,7 +89,7 @@ public class PacientePersistenceTest {
 
          list_cons2.add(cons3);
          pacprub2.setConsultas(list_cons2);
-         daof.getDaoPaciente().save(pacprub2);
+         //daof.getDaoPaciente().save(pacprub2);
                Paciente load3 = daof.getDaoPaciente().load(1111,"cc");
                  assertEquals("Sergio Erick", load3.getNombre());
         //PRUEBA 4
